@@ -1,6 +1,7 @@
 import numpy as np
 
-MIN_CYCLE_NUM = 2
+MIN_CYCLE_NUM = 5
+OFFSET_NUM = 0
 
 # TODO: give a legal init f
 f_init = [   8,  2, 19, 22,  0, 24, 18, 17,  4, 13,

@@ -1,7 +1,7 @@
 import numpy as np
 import itertools as it
 import data
-from data import KeyGroup, LetterGroup, MIN_CYCLE_NUM
+from data import KeyGroup, LetterGroup, MIN_CYCLE_NUM, OFFSET_NUM
 
 ''' 
     file I/O
@@ -22,7 +22,16 @@ def OutputMatrix(file_path, M):
 # only runs once to generate matrix p, 
 def GenMatrixP():
     L = GetMatrix("Matrix_L.txt")
-    C = GetMatrix("Matrix_D.txt")
+    
+    # C = GetMatrix("Matrix_D.txt")
+
+    D = GetMatrix("Matrix_D.txt")
+    C = [[0 for i in range(0, 8)] for j in range(0, 16)]
+    for i in range(0, 16):
+        for j in range(0, 8):
+            C[i][j] = D[i][j] + OFFSET_NUM
+
+
     P = [[0 for i in range(0, 26)] for j in range(0, 26)]
     for i in range(0,26):
         for j in range(0, 26):
@@ -48,7 +57,7 @@ def GetComfort(P, R, f):
 def Traversing(P, R):
     min_f = data.f_init
     # here we consume that w is always less than 20000000
-    min_w = float(20000000.)
+    min_w = float(2000000000.)
 
     for i in range(0, 5):
         lenth = len(LetterGroup[i])
